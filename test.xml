@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Diabetes FAQ">
+    <mxGraphModel dx="983" dy="478" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="โรคเบาหวานคืออะไร?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="โรคเบาหวานเป็นภาวะที่ร่างกายไม่สามารถผลิตหรือใช้ฮอร์โมนอินซูลินได้อย่างมีประสิทธิภาพ ทำให้ระดับน้ำตาลในเลือดสูงเกินไป" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="20" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;" edge="1" parent="1" source="2" target="3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="อาการของโรคเบาหวานมีอะไรบ้าง?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="120" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="อาการทั่วไปได้แก่ ปัสสาวะบ่อย, กระหายน้ำมาก, หิวบ่อย, น้ำหนักลด, เหนื่อยง่าย และมีอาการแผลหายช้า" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="120" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;" edge="1" parent="1" source="5" target="6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="ประเภทของโรคเบาหวานมีอะไรบ้าง?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="220" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="โรคเบาหวานชนิดที่ 1 (Type 1 Diabetes), โรคเบาหวานชนิดที่ 2 (Type 2 Diabetes), โรคเบาหวานขณะตั้งครรภ์ (Gestational Diabetes)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="220" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;" edge="1" parent="1" source="8" target="9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="โรคเบาหวานชนิดที่ 1 เกิดจากอะไร?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="320" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="เกิดจากระบบภูมิคุ้มกันโจมตีและทำลายเซลล์ที่ผลิตอินซูลินในตับอ่อน ทำให้ไม่สามารถผลิตอินซูลินได้" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="320" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;" edge="1" parent="1" source="11" target="12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="โรคเบาหวานชนิดที่ 2 เกิดจากอะไร?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="420" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="เกิดจากร่างกายไม่สามารถใช้ฮอร์โมนอินซูลินได้อย่างมีประสิทธิภาพ (ภาวะดื้ออินซูลิน) หรือผลิตอินซูลินไม่เพียงพอ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="420" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;" edge="1" parent="1" source="14" target="15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="การป้องกันโรคเบาหวานทำได้อย่างไร?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="520" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="การรับประทานอาหารที่มีประโยชน์, การออกกำลังกายสม่ำเสมอ, ควบคุมน้ำหนัก และตรวจสุขภาพประจำปี" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="520" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;" edge="1" parent="1" source="17" target="18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
