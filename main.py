@@ -10,7 +10,9 @@ from io import BytesIO
 from PIL import Image
 import tensorflow as tf
 import io
-
+from typing import List, Dict
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 
 class DWT2D(tf.keras.layers.Layer):
     def __init__(self, **kwargs):
@@ -51,7 +53,11 @@ class DWT2D(tf.keras.layers.Layer):
 app = FastAPI()
 
 # Model Loading
-model_num = load('model_num.pkl')
+model_diabetic = load('model_num.pkl')
+model_brain_stroke = load('Brain-Stroke-Prediction-Model.pkl')
+model_cardiovascular = load('Cardiovascular-Diseases-Predict-Model.pkl')
+model_chronic = load('Chronic-Kidney-Disease-Prediction-Model.pkl')
+model_heart_failure = load('Heart-Failure-Prediction-Model.pkl')
 model_img_densenet = load_model('model_image_densenet.h5')
 model_img_incept = load_model('model_image_inception.h5', custom_objects={'DWT2D': DWT2D})
 
@@ -67,7 +73,7 @@ app.add_middleware(
 )
 
 # Pydantic model for data validation
-class Item(BaseModel):
+class Item_model_diabetic(BaseModel):
     Pregnancies: float
     Glucose: float
     BloodPressure: float
@@ -77,18 +83,143 @@ class Item(BaseModel):
     DiabetesPedigreeFunction: float
     Age: int
 
+class Item_model_brain_stroke(BaseModel):
+    gender: str
+    age: float
+    hypertension: str
+    heart_disease: str
+    ever_married: str
+    work_type: str
+    Residence_type: str
+    avg_glucose_level: float
+    bmi: float
+    smoking_status: str
+
+class Item_model_crdiovascular(BaseModel):
+    age: float
+    anaemia: float
+    creatinine_phosphokinase: float
+    diabetes: float
+    ejection_fraction: float
+    high_blood_pressure: float
+    platelets: float
+    serum_creatinine: float
+    serum_sodium: float
+    sex: float
+    smoking: float
+    time: float
+
+class Item_model_chronic(BaseModel):
+    age: float
+    blood_pressure: float
+    specific_gravity: float
+    albumin: float
+    sugar: float
+    red_blood_cells: str
+    pus_cell: str
+    pus_cell_clumps: str
+    bacteria: str
+    blood_glucose_random: float
+    blood_urea: float
+    serum_creatinine: float
+    sodium: float
+    potassium: float
+    haemoglobin: float
+    packed_cell_volume: str
+    white_blood_cell_count: str
+    red_blood_cell_count: str
+    hypertension: str
+    diabetes_mellitus: str
+    coronary_artery_disease: str
+    appetite: str
+    peda_edema: str
+    aanemia: str
+
+class Item_model_heart_failure(BaseModel):
+    Age: float
+    Sex: str
+    ChestPainType: str
+    Cholesterol: float
+    FastingBS: float
+    MaxHR: float
+    ExerciseAngina: str
+    Oldpeak: float
+    ST_Slope: str
+
+def preprocess_data(data: Dict):
+    XX = pd.DataFrame([data])
+    
+    catcol = [col for col in XX.columns if XX[col].dtype == "object"]
+    
+    le = LabelEncoder()
+    for col in catcol:
+        XX[col] = le.fit_transform(XX[col])
+    
+    return XX
+
+
 
 # Predict endpoint
-@app.post('/predict_logisticregression/')
-def predict(item: Item):
+
+@app.post('/predict_diabetic/')
+def predict(item: Item_model_diabetic):
     data = item.dict()
     list_data = list(data.values())
-    prediction = model_num.predict([list_data])
+    prediction = model_diabetic.predict([list_data])
     if int(prediction[0]) == 1:
         res_pred = "ํYou have diabetes."
     else:
         res_pred = "You don't have diabetes."
     return {'prediction': res_pred}
+
+
+@app.post('/predict_brain_stroke/')
+def predict(item: Item_model_brain_stroke):
+    data = item.dict()
+    processed_data = preprocess_data(data)
+    list_data = processed_data.values.tolist()[0]  
+    prediction = model_brain_stroke.predict([list_data])
+    if int(prediction[0]) == 1:
+        res_pred = "ํStroke"
+    else:
+        res_pred = "Not stroke"
+    return {'prediction': res_pred}
+
+@app.post('/predict_crdiovascular/')
+def predict(item: Item_model_crdiovascular):
+    data = item.dict()
+    list_data = list(data.values())
+    prediction = model_cardiovascular.predict([list_data])
+    if int(prediction[0]) == 1:
+        res_pred = "Dead"
+    else:
+        res_pred = "Not dead"
+    return {'prediction': res_pred}
+
+@app.post('/predict_chronic/')
+def predict(item: Item_model_chronic):
+    data = item.dict()
+    processed_data = preprocess_data(data)
+    list_data = processed_data.values.tolist()[0]  
+    prediction = model_chronic.predict([list_data])
+    if int(prediction[0]) == 1:
+        res_pred = "Not ckd"
+    else:
+        res_pred = "Ckd"
+    return {'prediction': res_pred}
+
+@app.post('/predict_heart_failure/')
+def predict(item: Item_model_heart_failure):
+    data = item.dict()
+    processed_data = preprocess_data(data)
+    list_data = processed_data.values.tolist()[0] 
+    prediction = model_heart_failure.predict([list_data])
+    if int(prediction[0]) == 1:
+        res_pred = "Heart failure"
+    else:
+        res_pred = "Not heart failure"
+    return {'prediction': res_pred}
+
 
 # Classification labels
 class_labels = {0: "No DR", 1: "Mild", 2: "Moderate", 3: "Severe", 4: "Proliferative DR"}
